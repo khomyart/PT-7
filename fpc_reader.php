@@ -1,37 +1,46 @@
 <?php
-    include "header.php";
+    include "head.php";
 
     $words_devider="**|||";
     $string = file_get_contents("fpc_data.dat");
     $string = explode ($words_devider, $string);
-
-    var_dump($string);
-
-    include "footer.php";
     
-    $headers = ["Description", "Restrictions", "Wi-fi", "Owner data"];
+    //$headers = ["Description", "Restrictions", "Wi-fi", "Owner data"];
 
-    $description = [
-        "title" => "Title",
-        "sdesc" => "Short Description",
-        "desc" => "Description"
+    $form = [
+            "title" => "Title",
+            "sdesc" => "Short Description",
+            "desc" => "Description",
+            "minprice" => "Min. price",
+            "minstay" => "Min. stay",
+            "maxstay" => "Max. stay",
+            "cancelpolicy" => "Cancelation policy",
+            "network" => "Network",
+            "password" => "Password",
+            "mail" => "Email",
+            "phone" => "Phone",
     ];
-
-    $restrictions = [
-        "minprice" => "Min. price",
-        "minstay" => "Min. stay",
-        "maxstay" => "Max. stay",
-        "cancelpolicy" => "Cancelation policy"
-    ];
-
-    $wifi = [
-        "network" => "Network",
-        "password" => "Password"
-    ];
-
-    $ownerdata = [
-        "mail" => "Email",
-        "phone" => "Phone"
-    ]
-    
 ?>
+
+<div class="container col-5">
+    <table class="table table-striped">
+        <tbody>
+            <?php
+                $i = 0;
+                foreach ($form as $key) {
+            ?>
+                <tr>
+                <th class="w-40 text-left" scope="row"><?=$key;?></th>
+                <td><?=$string[$i]; $i += 1;?></td>
+                </tr>
+            <?php 
+                }
+            ?>
+        </tbody>
+    </table>
+</div>
+
+<?php
+    include "footer.php";
+?>
+
