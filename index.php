@@ -2,8 +2,9 @@
 <?php
     include "func_and_IFs.php";
     include "head.php";
-    $file = "fpc_data.dat";
-    $words_devider="**|||"
+    $file_fcp = "fpc_data.dat";
+    $file_fop = "fop_data.dat";
+    $words_devider="**|||";
 ?>
     <body>
         <br>
@@ -154,7 +155,7 @@
                     $key = $key.$words_devider;
                 }
 
-                file_put_contents($file, $product); //writing file with $product massive
+                file_put_contents($file_fcp, $product); //writing file with $product massive
                 $product=$product_backup; // reseting to original value of a $product
             };
         ?>
@@ -168,10 +169,16 @@
                 foreach ($product as &$key) { //adding divider in the end of an each element of a $product
                     $key = $key.$words_devider;
                 }
-
-                file_put_contents($file, $product); //writing file with $product massive
-                $product=$product_backup; // reseting to original value of a $product
-            };
+                if (!file_exists($file_fop)) {
+                    $fop = fopen($file_fop, "r+"); //
+                    fwrite ($fop, $product); // 
+                    fclose ($fop);
+                } else {
+                    echo ("fop file is not exist yet!");
+                }
+                $product=$product_backup;
+            }; 
+            
         ?>
         <!--FOP_WRITER--><!--FOP_WRITER--><!--FOP_WRITER-->
 
