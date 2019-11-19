@@ -146,16 +146,34 @@
                 </div>
             </div>
         </div>
+        <!--FPC_WRITER--><!--FPC_WRITER--><!--FPC_WRITER-->
         <?php 
-            $product_backup = $product;
             if (empty($feedbackData)) {
-                foreach ($product as &$key) {
+                $product_backup = $product; // making a backup of a $product before editing it by using it in foreach down below
+                foreach ($product as &$key) { //adding divider in the end of an each element of a $product
                     $key = $key.$words_devider;
                 }
-                file_put_contents($file, $product);
-                $product=$product_backup;
+
+                file_put_contents($file, $product); //writing file with $product massive
+                $product=$product_backup; // reseting to original value of a $product
             };
         ?>
+        <!--FPC_WRITER--><!--FPC_WRITER--><!--FPC_WRITER-->
+
+
+        <!--FOP_WRITER--><!--FOP_WRITER--><!--FOP_WRITER-->
+        <?php 
+            if (empty($feedbackData)) {
+                $product_backup = $product; // making a backup of a $product before editing it by using it in foreach down below
+                foreach ($product as &$key) { //adding divider in the end of an each element of a $product
+                    $key = $key.$words_devider;
+                }
+
+                file_put_contents($file, $product); //writing file with $product massive
+                $product=$product_backup; // reseting to original value of a $product
+            };
+        ?>
+        <!--FOP_WRITER--><!--FOP_WRITER--><!--FOP_WRITER-->
 
 <?php
     include "footer.php";
