@@ -9,6 +9,8 @@
 
     include "footer.php";
     
+    $headers = ["Description", "Restrictions", "Wi-fi", "Owner data"];
+
     $description = [
         "title" => "Title",
         "sdesc" => "Short Description",
