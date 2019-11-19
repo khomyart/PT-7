@@ -2,6 +2,8 @@
 <?php
     include "func_and_IFs.php";
     include "head.php";
+    $file = "fpc_data.dat";
+    $words_devider="**|||"
 ?>
     <body>
         <br>
@@ -144,6 +146,16 @@
                 </div>
             </div>
         </div>
+        <?php 
+            $product_backup = $product;
+            if (empty($feedbackData)) {
+                foreach ($product as &$key) {
+                    $key = $key.$words_devider;
+                }
+                file_put_contents($file, $product);
+                $product=$product_backup;
+            };
+        ?>
 
 <?php
     include "footer.php";
