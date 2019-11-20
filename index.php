@@ -2,9 +2,11 @@
 <?php
     include "func_and_IFs.php";
     include "head.php";
-    $file_fcp = "fpc_data.dat";
+    $file_fpc = "fpc_data.dat";
     $file_fop = "fop_data.dat";
     $words_devider="**|||";
+    
+    //$_POST = ["fopchecker", "fopdeleter", "fpcchecker", "fpcdeleter"];
 ?>
     <body>
         <br>
@@ -143,37 +145,40 @@
                             <button type="submit" class="btn btn-primary">Save data</button>
                         </div>
                     </form>
-                    <br /><br />
+                    <br/><br/>
                 </div>
             </div>
         </div>
-        <!--FPC_WRITER--><!--FPC_WRITER--><!--FPC_WRITER-->
+        <!--FILES_WRITER--><!--FILES_WRITER--><!--FILES_WRITER-->
         <?php
-
-            fileCheck($file_fop);
-
-            fileCheck($file_fcp);
-
             if (empty($feedbackData)) {
-                $massive_backup = $product; // making a backup of a $product before editing it by using it in foreach down below
-                foreach ($product as &$key) { //adding divider in the end of an each element of a $product
-                    $key = $key.$words_devider;
-                }
-                file_put_contents($file_fcp, $product); //writing file with $product massive
-                $product=$massive_backup; // reseting to original value of a $product
+                fpcAlgorithm($product, $words_devider, $file_fpc);
+                fopAlgorithm($product, $words_devider, $file_fop);
             };
-
-            $fop = fopen($file_fop, "w"); //
-            $product = implode($product);
-            fwrite ($fop, $product); // 
-            fclose ($fop); //
         ?>
-        <!--FPC_WRITER--><!--FPC_WRITER--><!--FPC_WRITER-->
+        <!--FILES_WRITER--><!--FILES_WRITER--><!--FILES_WRITER-->
+        
+        <!-- Small modal -->
+        
 
-
-        <!--FOP_WRITER--><!--FOP_WRITER--><!--FOP_WRITER-->
-
-        <!--FOP_WRITER--><!--FOP_WRITER--><!--FOP_WRITER-->
+        <?php
+      
+        if(isset($_GET["button1"])) { 
+            fileCheck($file_fop); 
+        } 
+        if(isset($_GET['button2'])) { 
+            fileCheck($file_fpc); 
+        } 
+    ?> 
+      
+    <form method="get" target="iframe"> 
+        <input type="submit" name="button1"
+                value="Button1"/> 
+          
+        <input type="submit" name="button2"
+                value="Button2"/> 
+    </form> 
+        
 
 <?php
     include "footer.php";
