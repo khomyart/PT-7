@@ -1,6 +1,5 @@
 <?php
     include "head.php";
-
     $words_devider="**|||";
     $string = file_get_contents("fpc_data.dat");
     $string = explode ($words_devider, $string);
@@ -22,7 +21,13 @@
     ];
 ?>
 
-<div class="container col-5">
+<div class="container col-7">
+    <div>
+        <h1>
+            FPC Reader
+        </h1>
+    </div>
+
     <table class="table table-striped">
         <tbody>
             <?php
@@ -30,7 +35,7 @@
                 foreach ($form as $key) {
             ?>
                 <tr>
-                <th class="w-40 text-left" scope="row"><?=$key;?></th>
+                <th style="min-width: 40%;" class=" text-left" scope="row"><?=$key;?></th>
                 <td><?=$string[$i]; $i += 1;?></td>
                 </tr>
             <?php 
@@ -38,7 +43,21 @@
             ?>
         </tbody>
     </table>
+
+    <div class = "d-flex justify-center">
+        <a href="http://pt-7.khomyart.com/" >
+            <button type="button" class="btn btn-primary">Back to form</button>
+        </a>
+
+        <a href="http://pt-7.khomyart.com/fop_reader.php" >
+            <button type="button" class="btn btn-primary">Go to "fop_reader.php"</button>
+        </a>
+    </div>
+
 </div>
+
+
+
 
 <?php
     include "footer.php";
