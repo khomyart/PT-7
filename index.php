@@ -149,22 +149,24 @@
         </div>
         <!--FPC_WRITER--><!--FPC_WRITER--><!--FPC_WRITER-->
         <?php
-            clearstatcache();
-            if (filesize())
+
+            fileCheck($file_fop);
+
+            fileCheck($file_fcp);
+
             if (empty($feedbackData)) {
-                $product_backup = $product; // making a backup of a $product before editing it by using it in foreach down below
+                $massive_backup = $product; // making a backup of a $product before editing it by using it in foreach down below
                 foreach ($product as &$key) { //adding divider in the end of an each element of a $product
                     $key = $key.$words_devider;
                 }
-                
                 file_put_contents($file_fcp, $product); //writing file with $product massive
-                $fop = fopen($file_fop, "w"); //
-                $product = implode($product);
-
-                fwrite ($fop, $product); // 
-                fclose ($fop); //
-                $product=$product_backup; // reseting to original value of a $product
+                $product=$massive_backup; // reseting to original value of a $product
             };
+
+            $fop = fopen($file_fop, "w"); //
+            $product = implode($product);
+            fwrite ($fop, $product); // 
+            fclose ($fop); //
         ?>
         <!--FPC_WRITER--><!--FPC_WRITER--><!--FPC_WRITER-->
 

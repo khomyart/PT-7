@@ -105,6 +105,37 @@
         $feedbackData[$field] = $feedback;
     }
 
+     /**
+     * File emptyness and presence checker. 
+     *
+     * @param string $file_name
+     */
+
+    function fileCheck($file_name) {
+        clearstatcache();
+        if(file_exists($file_name)){
+            if (filesize($file_name)==0) {
+                echo ($file_name." is empty");
+            } else {
+            }
+        } else {
+            echo ($file_name." does not exist");
+        }
+    }    
+
+    function fopAlgorithm($mfp, ) {
+        global $feedbackData;
+        if (empty($feedbackData)) {
+            $massive_backup = $mfp; // making a backup of a $product before editing it by using it in foreach down below
+            foreach ($mfp as &$key) { //adding divider in the end of an each element of a $product
+                $key = $key.$words_devider;
+            }
+            file_put_contents($file_fcp, $product); //writing file with $product massive
+            $mfp=$massive_backup; // reseting to original value of a $product
+        }
+    }
+
+
     if (!empty($_POST['product'])) {
         define('IS_POST_REQUEST', true);
 
