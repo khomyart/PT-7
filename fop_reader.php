@@ -23,6 +23,8 @@
     ];
 ?>
 
+
+
 <div class="container col-7">
     <div>
         <h1>
@@ -36,7 +38,7 @@
                 foreach ($form as $key) {
             ?>
                 <tr>
-                <th style="min-width: 40%;" class=" text-left" scope="row"><?=$key;?></th>
+                <th class="w-50 text-left" scope="row"><?=$key;?></th>
                 <td><?=$string[$i]; $i += 1;?></td>
                 </tr>
             <?php 
@@ -45,10 +47,10 @@
         </tbody>
     </table>
     <div class = "d-flex justify-center">
-        <a href="http://pt-7.khomyart.com" >
+        <!--<a href="http://pt-7.khomyart.com/" >
             <button type="button" class="btn btn-primary">Back to form</button>
         </a>
-
+        -->
         <a href="http://pt-7.khomyart.com/fpc_reader.php" >
             <button type="button" class="btn btn-primary">Go to "fpc_reader.php"</button>
         </a>

@@ -35,7 +35,7 @@
                 foreach ($form as $key) {
             ?>
                 <tr>
-                <th style="min-width: 40%;" class=" text-left" scope="row"><?=$key;?></th>
+                <th sclass="w-50 text-left" scope="row"><?=$key;?></th>
                 <td><?=$string[$i]; $i += 1;?></td>
                 </tr>
             <?php 
@@ -45,15 +45,14 @@
     </table>
 
     <div class = "d-flex justify-center">
-        <a href="http://pt-7.khomyart.com/" >
+        <!--<a href="http://pt-7.khomyart.com/" >
             <button type="button" class="btn btn-primary">Back to form</button>
         </a>
-
+        -->
         <a href="http://pt-7.khomyart.com/fop_reader.php" >
             <button type="button" class="btn btn-primary">Go to "fop_reader.php"</button>
         </a>
     </div>
-
 </div>
 
 

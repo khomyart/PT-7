@@ -91,7 +91,6 @@
                                 </select>
                                 <?= getFeedbackBlock('c-policy'); ?>
                             </div>
-                            
                         </div>
 
                         <!-- WiFi section -->
@@ -114,7 +113,6 @@
                                     value="<?= getFieldValue('nettwerk-pass')?>">
                                 <?= getFeedbackBlock('nettwerk-pass'); ?>
                             </div>
-
                         </div>
 
                         <!-- Owner info -->
@@ -137,7 +135,6 @@
                                     value="<?= getFieldValue('phone')?>">
                                 <?= getFeedbackBlock('phone'); ?>
                             </div>
-                            
                         </div>
 
                         <hr>
@@ -148,37 +145,72 @@
                     <br/><br/>
                 </div>
             </div>
-        </div>
-        <!--FILES_WRITER--><!--FILES_WRITER--><!--FILES_WRITER-->
-        <?php
-            if (empty($feedbackData)) {
-                fpcAlgorithm($product, $words_devider, $file_fpc);
-                fopAlgorithm($product, $words_devider, $file_fop);
-            };
-        ?>
-        <!--FILES_WRITER--><!--FILES_WRITER--><!--FILES_WRITER-->
-        
-        <!-- Small modal -->
-        
+           
+                <!--FILES_WRITER--><!--FILES_WRITER--><!--FILES_WRITER-->
+                <?php
+                    if (empty($feedbackData)) {
+                        fpcAlgorithm($product, $words_devider, $file_fpc);
+                        fopAlgorithm($product, $words_devider, $file_fop);
+                    };
+                ?>
+                <!--FILES_WRITER--><!--FILES_WRITER--><!--FILES_WRITER-->
 
-        <?php
-      
-        if(isset($_GET["button1"])) { 
-            fileCheck($file_fop); 
-        } 
-        if(isset($_GET['button2'])) { 
-            fileCheck($file_fpc); 
-        } 
-    ?> 
-      
-    <form method="get" target="iframe"> 
-        <input type="submit" name="button1"
-                value="Button1"/> 
-          
-        <input type="submit" name="button2"
-                value="Button2"/> 
-    </form> 
-        
+                <form class="text-center" action="/validation_page.php" method="get" target="_blank"> 
+                    <h3>
+                        <br><br>
+                        CHECKERS
+                        <hr>
+                    </h3>
+
+                    <button type="submit" class="btn btn-primary" name="button1" value="fpc_check"> 
+                        FPC Checker 
+                    </button>
+                    <button type="submit" class="btn btn-primary" name="button2" value="fop_check"> 
+                        FOP Checker 
+                    </button>
+
+                    <h3>
+                        <br><br>
+                        DELETERS
+                        <hr>
+                    </h3>
+                    <button type="submit" class="btn btn-primary" name="button3" value="fpc_deleter"> 
+                        FPC Deleter 
+                    </button>
+                    <button type="submit" class="btn btn-primary" name="button4" value="fop_deleter"> 
+                        FOP Deleter 
+                    </button>
+
+                    <h3>
+                        <br><br>
+                        CLEANERS
+                        <hr>
+                    </h3>
+                    <button type="submit" class="btn btn-primary" name="button5" value="fpc_cleaner"> 
+                        FPC Cleaner 
+                    </button>
+
+                    <button type="submit" class="btn btn-primary" name="button6" value="fop_cleaner"> 
+                        FOP Cleaner 
+                    </button>
+
+                    <h3>
+                        <br><br>
+                        READERS
+                        <hr>
+                    </h3>
+                    
+                    <a href="/fpc_reader.php" target="_blank" style="text-decoration:none;">
+                        <button type="button" class="btn btn-primary"> FPC Reader </button>
+                    </a>
+
+                    <a href="/fop_reader.php" target="_blank" style="text-decoration:none;">
+                        <button type="button" class="btn btn-primary"> FOP Reader </button>
+                    </a>
+                </form>
+
+                <div style="height: 100px;"> </div>
+        </div>
 
 <?php
     include "footer.php";

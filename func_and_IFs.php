@@ -104,33 +104,47 @@
 
         $feedbackData[$field] = $feedback;
     }
-///////////////////////////////////////////////////////////////////////////////////////////////////////////
+
      /**
      * File emptyness and presence checker. 
      *
      * @param string $file_name
      */
-
     function fileCheck($file_name) {
         if(file_exists($file_name)){
-            echo($file_name. ' exists <br>');
+            echo ($file_name.' exists. <br />');
             if (filesize($file_name)==0) {
-                echo ($file_name.' is empty <br>');
+                echo ($file_name.' is empty. <br />');
             } else {
-                echo ($file_name.' prepeared to be readed <br>');
+                echo ($file_name.' is full of interesting little symbols. <br />');
             }
         } else {
-            echo ($file_name.' does not exist <br>');
+            echo ($file_name.' does not exist. <br />');
         }
         clearstatcache();
-    }    
+    }
 
+     /**
+     * Write string array "$mfp" to a file "$filename" using "$words_devider" for dividing words in string; (uses  file_put_contents)
+     *
+     * @param array $mfp
+     * @param string $words_devider
+     * @param string $filename
+     */
     function fpcAlgorithm($mfp, $words_devider, $filename) {
         foreach ($mfp as &$key) { //adding divider in the end of an each element of a $product
             $key = $key.$words_devider;
         }
         file_put_contents($filename, $mfp); //writing file with $mfp massive
     }
+
+     /**
+     * Write string array "$mfp" to a file "$filename" using "$words_devider" for dividing words in string; (uses  fopen, fwrite, fclose)
+     *
+     * @param array $mfp
+     * @param string $words_devider
+     * @param string $filename
+     */
 
     function fopAlgorithm($mfp, $words_devider, $filename) {
         foreach ($mfp as &$key) { 
@@ -142,6 +156,12 @@
         fclose ($fop); 
     }
 
+     /**
+     * Deletes file with name "$filename"
+     *
+     * @param string $filename
+     */
+
     function fileDel ($filename) {
         if(unlink($filename)) {
             echo ($filename.' has been deleted');
@@ -149,30 +169,8 @@
             echo ($filename.' cannot be deleted because of unexpected error');
         }
     }
-/*
-    function iframeFOPActions($filename) {
-        if(isset($_POST["fopchecker"]) {
-             fileCheck($filename);
-        }
-        
-        if(isset($_POST["fopdeleter"]) {
-            fileDel($filename);
-        }
-    }
 
-    function iframeFPCActions($filename) {
-        if(isset($_POST["fpcchecker"]) {
-            fileCheck($filename);
-        }
-        
-        if(isset($_POST["fpcdeleter"]) {
-            fileDel($filename);
-            
-        }
-    }
-    */
 
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     if (!empty($_POST['product'])) {
         define('IS_POST_REQUEST', true);
 
