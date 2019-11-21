@@ -19,15 +19,20 @@
             "mail" => "Email",
             "phone" => "Phone",
     ];
+
+    if ($string[6] === "1") {$string[6]="Full refund 1 day prior to arrival, except fees";}
+    if ($string[6] === "3") {$string[6]="Full refund 5 days prior to arrival, except fees";}
+    if ($string[6] === "11") {$string[6]="Strict Non Refundable";}
+    if ($string[6] === "21") {$string[6]="Partially Refundable";}
+    if ($string[6] === "22") {$string[6]="Partially Refundable 14 Days prior";}
 ?>
 
-<div class="container col-7">
+<div class="container col-6">
     <div>
         <h1>
             FPC Reader
         </h1>
     </div>
-
     <table class="table table-striped">
         <tbody>
             <?php
@@ -35,7 +40,7 @@
                 foreach ($form as $key) {
             ?>
                 <tr>
-                <th sclass="w-50 text-left" scope="row"><?=$key;?></th>
+                <th class="w-25 text-left" scope="row"><?=$key;?></th>
                 <td><?=$string[$i]; $i += 1;?></td>
                 </tr>
             <?php 
@@ -43,7 +48,6 @@
             ?>
         </tbody>
     </table>
-
     <div class = "d-flex justify-center">
         <!--<a href="http://pt-7.khomyart.com/" >
             <button type="button" class="btn btn-primary">Back to form</button>
