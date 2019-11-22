@@ -199,14 +199,14 @@
                         READERS
                         <hr>
                     </h3>
-                    
-                    <a href="/fpc_reader.php" target="_blank" style="text-decoration:none;">
-                        <button type="button" class="btn btn-primary"> FPC Reader </button>
-                    </a>
+                        <button type="submit" name="button7" value="fpc_reader" class="btn btn-primary">
+                            FPC Reader 
+                        </button>
 
-                    <a href="/fop_reader.php" target="_blank" style="text-decoration:none;">
-                        <button type="button" class="btn btn-primary"> FOP Reader </button>
-                    </a>
+                        <button type="submit" name="button8" value="fop_reader" class="btn btn-primary"> 
+                            FOP Reader 
+                        </button>
+                        
                 </form>
 
                 <div style="height: 100px;"> </div>
